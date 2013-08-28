@@ -1,0 +1,20 @@
+D:\Program Files\PostgreSQL\9.2\bin>psql -U postgres -d book
+
+psql (9.2.4)
+输入 "help" 来获取帮助信息.
+
+book=# CREATE TABLE countries(
+book(# country_code char(2) PRIMARY KEY,
+book(# country_name text UNIQUE)
+book-# ;
+注意:  CREATE TABLE / PRIMARY KEY 将要为表 "countries" 创建隐含索引 "countries_pkey"
+注意:  CREATE TABLE / UNIQUE 将要为表 "countries" 创建隐含索引 "countries_country_name_key"
+CREATE TABLE
+book=# INSERT INTO countries (country_code, country_name)
+book-# VALUES ('us', 'United States');
+INSERT 0 1
+book=# SELECT * FROM countries;
+ country_code | country_name
+--------------+---------------
+ us           | United States
+(1 行记录)
