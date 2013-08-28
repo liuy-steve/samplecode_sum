@@ -18,3 +18,44 @@ book=# SELECT * FROM countries;
 --------------+---------------
  us           | United States
 (1 行记录)
+
+book=# INSERT INTO countries (country_code, country_name)
+book-# VALUES ('mx', 'Mexico'), ('au', 'Australia'), ('gb', 'United Kingdom');
+INSERT 0 3
+book=# SELECT * FROM countries;
+ country_code |  country_name
+--------------+----------------
+ us           | United States
+ mx           | Mexico
+ au           | Australia
+ gb           | United Kingdom
+(4 行记录)
+
+book=# INSERT INTO countries (country_code, country_name)
+book-# VALUES ('de', 'Germany'), ('ll', 'Loompaland');
+INSERT 0 2
+book=# SELECT * FROM countries;
+ country_code |  country_name
+--------------+----------------
+ us           | United States
+ mx           | Mexico
+ au           | Australia
+ gb           | United Kingdom
+ de           | Germany
+ ll           | Loompaland
+(6 行记录)
+
+book=# DELETE FROM countries WHERE country_code = 'll'
+book-# ;
+DELETE 1
+
+book=# SELECT * FROM countries;
+ country_code |  country_name
+--------------+----------------
+ us           | United States
+ mx           | Mexico
+ au           | Australia
+ gb           | United Kingdom
+ de           | Germany
+(5 行记录)
+
