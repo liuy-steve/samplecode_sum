@@ -1,0 +1,132 @@
+search:
+
+===================
+3
+===================
+It's only different on multi-column fks, it's valid but uninteresting
+on singles.  A multi column foreign key is something like the one
+in the following:
+create table foo (
+ a int,
+ b int,
+ foreign key (a,b) references bar
+);
+The key that's being checked is the combination of a and b.
+
+For the unspecified match type, if either is NULL, the constraint
+is passed.  For MATCH FULL, either both must be non-NULL and match
+in the other table or both must be null for the constraint to pass.
+
+GOAL:
+=========
+1
+==========
+book=# \d
+                      关联列表
+ 架构模式 |        名称         |  型别  |  拥有者
+----------+---------------------+--------+----------
+ public   | cities              | 资料表 | postgres
+ public   | countries           | 资料表 | postgres
+ public   | events              | 资料表 | postgres
+ public   | events_event_id_seq | 序列数 | postgres
+ public   | venues              | 资料表 | postgres
+ public   | venues_venue_id_seq | 序列数 | postgres
+(6 行记录)
+
+======
+2
+======
+使用图形查询工具生成的
+SELECT 
+  events.venue_id, 
+  events.event_id, 
+  events.title, 
+  events.starts, 
+  events.ends, 
+  countries.country_name
+FROM 
+  public.cities, 
+  public.countries, 
+  public.events, 
+  public.venues
+WHERE 
+  cities.postal_code = venues.postal_code AND
+  cities.country_code = venues.country_code AND
+  countries.country_code = cities.country_code AND
+  venues.venue_id = events.venue_id;
+  
+  ==========
+  3
+  ==========
+book=# \h ALTER TABLE
+命令：       ALTER TABLE
+描述：       更改资料表的定义
+语法：
+ALTER TABLE [ IF EXISTS ] [ ONLY ] 名称 [ * ]
+    操作 [, ... ]
+ALTER TABLE [ IF EXISTS ] [ ONLY ] 名称 [ * ]
+    RENAME [ COLUMN ] 列名称 TO new_column_name(新列名)
+ALTER TABLE [ IF EXISTS ] [ ONLY ] 名称 [ * ]
+    RENAME CONSTRAINT 约束名称 TO new_constraint_name(新约束名)
+ALTER TABLE [ IF EXISTS ] 名称
+    RENAME TO 新的名称
+ALTER TABLE [ IF EXISTS ] 名称
+    SET SCHEMA 新的模式
+
+操作可以是下列选项之一
+
+    ADD [ COLUMN ] 列名称 数据_类型 [ COLLATE 校对规则 ] [ 列约束 [ ... ] ]
+    DROP [ COLUMN ] [ IF EXISTS ] 列名称 [ RESTRICT | CASCADE ]
+    ALTER [ COLUMN ] 列名称 [ SET DATA ] TYPE 数据_类型 [ COLLATE 校对规则 ] [ USING 表达
+式
+    ALTER [ COLUMN ] 列名称 SET DEFAULT 表达式
+    ALTER [ COLUMN ] 列名称 DROP DEFAULT
+    ALTER [ COLUMN ] 列名称 { SET | DROP } NOT NULL
+    ALTER [ COLUMN ] 列名称 SET STATISTICS 整数
+    ALTER [ COLUMN ] 列名称 SET ( 属性选项 = 值 [, ... ] )
+    ALTER [ COLUMN ] 列名称 RESET ( 属性选项 [, ... ] )
+    ALTER [ COLUMN ] 列名称 SET STORAGE { PLAIN | EXTERNAL | EXTENDED | MAIN }
+    ADD 表约束 [ NOT VALID ]
+    ADD table_constraint_using_index(表约束使用索引)
+    VALIDATE CONSTRAINT 约束名称
+    DROP CONSTRAINT [ IF EXISTS ]  约束名称 [ RESTRICT | CASCADE ]
+    DISABLE TRIGGER [ 触发器_名称 | ALL | USER ]
+    ENABLE TRIGGER [ 触发器_名称 | ALL | USER ]
+    ENABLE REPLICA TRIGGER 触发器_名称
+    ENABLE ALWAYS TRIGGER 触发器_名称
+    DISABLE RULE 重写规则名称
+    ENABLE RULE 重写规则名称
+    ENABLE REPLICA RULE 重写规则名称
+    ENABLE ALWAYS RULE 重写规则名称
+    CLUSTER ON 索引名称
+    SET WITHOUT CLUSTER
+    SET WITH OIDS
+    SET WITHOUT OIDS
+    SET ( 存储参数 = 值 [, ... ] )
+    RESET ( 存储参数 [, ... ] )
+    INHERIT 父表
+    NO INHERIT 父表
+    OF 类型名称
+    NOT OF
+    OWNER TO 新的属主
+    SET TABLESPACE 新的表空间
+
+table_constraint_using_index 是:
+
+    [ CONSTRAINT 约束名称 ]
+    { UNIQUE | PRIMARY KEY } USING INDEX 索引名称
+    [ DEFERRABLE | NOT DEFERRABLE ] [ INITIALLY DEFERRED | INITIALLY IMMEDIATE ]
+    
+    
+book=# ALTER TABLE venues
+book-# ADD COLUMN active boolean DEFAULT 'TRUE';
+<p>ALTER TABLE</p>
+
+
+book=# SELECT * FROM venues;
+ venue_id |       name       | street_address |  type   | postal_code | country_code | active
+----------+------------------+----------------+---------+-------------+--------------+--------
+        1 | Crystal Ballroom |                | public  | 97205       | us           | t
+        2 | Voodoo Donutes   |                | public  | 97205       | us           | t
+(2 行记录)
+
