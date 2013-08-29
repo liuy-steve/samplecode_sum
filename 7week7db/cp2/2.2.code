@@ -59,3 +59,232 @@ book=# SELECT * FROM countries;
  de           | Germany
 (5 行记录)
 
+book=# CREATE TABLE cities(name text NOT NULL,postal_code varchar(9) CHECK (post
+al_code <> ''),country_code char(2) REFERENCES countries,PRIMARY KEY (country_co
+de, postal_code));
+注意:  CREATE TABLE / PRIMARY KEY 将要为表 "cities" 创建隐含索引 "cities_pkey"
+CREATE TABLE
+
+book-# INSERT INTO cities
+book-# VALUES ('Toronto', 'M4C1B5', 'ca');
+错误:  语法错误 在 "INTO" 或附近的
+第2行INSERT INTO cities
+            ^
+            
+book=# INSERT INTO cities
+book-# VALUES ('Potland', '87200', 'us');
+INSERT 0 1
+
+
+book=# SELECT
+book-#   cities.name,
+book-#   cities.postal_code,
+book-#   cities.country_code,
+book-#   countries.country_code,
+book-#   countries.country_name
+book-# FROM
+book-#   public.cities,
+book-#   public.countries
+book-# WHERE
+book-#   cities.country_code = countries.country_code;
+  name   | postal_code | country_code | country_code | country_name
+---------+-------------+--------------+--------------+---------------
+ Potland | 87200       | us           | us           | United States
+(1 行记录)
+
+
+book=# UPDATE cities
+book-# SET postal_code = '97205'
+book-# WHERE postal_code = '87200'
+book-# ;
+UPDATE 1
+book=# SELECT * FROM cities
+book-# ;
+  name   | postal_code | country_code
+---------+-------------+--------------
+ Potland | 97205       | us
+(1 行记录)
+
+
+
+################################################
+2.2.3
+################################################
+
+
+book=# SELECT cities.*, country_name
+book-# FROM cities INNER JOIN countries
+book-# ON cities.country_code = countries.country_code;
+  name   | postal_code | country_code | country_name
+---------+-------------+--------------+---------------
+ Potland | 97205       | us           | United States
+(1 行记录)
+
+
+book=# SELECT * FROM cities NATURAL JOIN countries;
+ country_code |  name   | postal_code | country_name
+--------------+---------+-------------+---------------
+ us           | Potland | 97205       | United States
+(1 行记录)
+
+
+book=# CREATE TABLE venues (
+book(# venue_id SERIAL PRIMARY KEY,
+book(# name varchar(255),
+book(# street_address text,
+book(# type char(7) CHECK (type in ('public', 'private')) DEFAULT 'public',
+book(# postal_code varchar(9),
+book(# country_code char(2),
+book(# FOREIGN KEY (country_code, postal_code)
+book(# REFERENCES cities (country_code, postal_code)MATCH FULL);
+注意:  CREATE TABLE 将为 serial 字段 "venues.venue_id" 创建隐含序列 "venues_venu
+e_id_seq"
+注意:  CREATE TABLE / PRIMARY KEY 将要为表 "venues" 创建隐含索引 "venues_pkey"
+CREATE TABLE
+
+
+book=# INSERT INTO venues (name, postal_code, country_code)
+book-# VALUES ('Crystal Ballroom', '97205', 'us');
+INSERT 0 1
+
+book=# SELECT * FROM venues
+book-# ;
+ venue_id |       name       | street_address |  type   | postal_code | country_code
+----------+------------------+----------------+---------+-------------+--------------
+        1 | Crystal Ballroom |                | public  | 97205       | us
+(1 行记录)
+
+book=# SELECT v.venue_id, v.name, c.name
+book-# FROM venues v INNER JOIN cities c
+book-# ON v.postal_code = c.postal_code AND v.country_code= c.country_code;
+ venue_id |       name       |  name
+----------+------------------+---------
+        1 | Crystal Ballroom | Potland
+(1 行记录)
+
+book=# INSERT INTO venues (name, postal_code, country_code)
+book-# VALUES ('Voodoo Donutes', '97205', 'us');
+INSERT 0 1
+book=# SELECT * FROM venues;
+ venue_id |       name       | street_address |  type   | postal_code | country_code
+----------+------------------+----------------+---------+-------------+--------------
+        1 | Crystal Ballroom |                | public  | 97205       | us
+        2 | Voodoo Donutes   |                | public  | 97205       | us
+(2 行记录)
+
+
+
+book=# CREATE TABLE events (                                                             
+book(# event_id SERIAL PRIMARY KEY,                                                      
+book(# title varchar(255),                                                               
+book(# starts varchar(255),                                                              
+book(# ends varchar(255),                                                                
+book(# veneu_id INT REFERENCES venues);                                                  
+注意:  CREATE TABLE 将为 serial 字段 "events.event_id" 创建隐含序列 "events_event_id_seq"
+注意:  CREATE TABLE / PRIMARY KEY 将要为表 "events" 创建隐含索引 "events_pkey"           
+CREATE TABLE                                                                             
+                        
+                        
+book=# INSERT INTO events(title)                                                                                                 
+book-# VALUES ('LARP Club');                             
+INSERT 0 1                                               
+book=# SELECT * FROM events;                             
+ event_id |   title   | starts | ends | veneu_id         
+----------+-----------+--------+------+----------        
+        1 | LARP Club |        |      |                  
+(1 行记录)                                               
+                                                         
+                                                         
+book=# UPDATE events SET veneu_id = 2 WHERE event_id = 1;
+UPDATE 1                                                 
+book=# SELECT * FROM events;                             
+ event_id |   title   | starts | ends | veneu_id         
+----------+-----------+--------+------+----------        
+        1 | LARP Club |        |      |        2         
+(1 行记录)                              
+
+
+book=# UPDATE events SET starts = '2012-02-15 17:30:00' WHERE event_id = 1;
+UPDATE 1
+book=# UPDATE events SET ends = '2012-02-15 19:30:30 'WHERE event_id = 1;
+UPDATE 1
+book=# SELECT * FROM events;
+ event_id |   title   |       starts        |         ends         | veneu_id
+----------+-----------+---------------------+----------------------+----------
+        1 | LARP Club | 2012-02-15 17:30:00 | 2012-02-15 19:30:30  |        2
+(1 行记录)
+
+book=# INSERT INTO events(title, starts, ends)
+book-# VALUES('April Fools Day', '2012-04-01 00:00:00', '2012-04-01 23:59:00');
+INSERT 0 1
+book=# INSERT INTO events(title, starts, ends)
+book-# VALUES('Christmas Day', '2012-12-25 00:00:00', '2012-12-25 23:59:00');
+INSERT 0 1
+book=# SELECT * FROM events;
+ event_id |      title      |       starts        |         ends         | veneu_id
+----------+-----------------+---------------------+----------------------+----------
+        1 | LARP Club       | 2012-02-15 17:30:00 | 2012-02-15 19:30:30  |        2
+        2 | April Fools Day | 2012-04-01 00:00:00 | 2012-04-01 23:59:00  |
+        3 | Christmas Day   | 2012-12-25 00:00:00 | 2012-12-25 23:59:00  |
+(3 行记录)
+
+book=# SELECT e.title, v.name
+book-# FROM events e JOIN venues v
+book-# ON e.venue_id = v.venue_id;
+   title   |      name
+-----------+----------------
+ LARP Club | Voodoo Donutes
+(1 行记录)
+
+book=# SELECT e.title, v.name
+book-# FROM events e LEFT JOIN venues v
+book-# ON e.venue_id = v.venue_id;
+      title      |      name
+-----------------+----------------
+ LARP Club       | Voodoo Donutes
+ Christmas Day   |
+ April Fools Day |
+(3 行记录)
+
+
+book=# SELECT e.title, v.name
+book-# FROM events e RIGHT JOIN venues v
+book-# ON e.venue_id = v.venue_id;
+   title   |       name
+-----------+------------------
+           | Crystal Ballroom
+ LARP Club | Voodoo Donutes
+(2 行记录)
+
+############################################
+2.2.5
+############################################
+
+book=# SELECT * FROM events WHERE event_id = 2;
+ event_id |      title      |       starts        |        ends         | venue_id
+----------+-----------------+---------------------+---------------------+----------
+        2 | April Fools Day | 2012-04-01 00:00:00 | 2012-04-01 23:59:00 |
+(1 行记录)
+
+
+book=# CREATE INDEX events_title
+book-# ON events USING hash(title);
+CREATE INDEX
+
+book=# SELECT * FROM events WHERE starts >= '2012-04-01';
+ event_id |      title      |       starts        |        ends         | venue_id
+----------+-----------------+---------------------+---------------------+----------
+        2 | April Fools Day | 2012-04-01 00:00:00 | 2012-04-01 23:59:00 |
+        3 | Christmas Day   | 2012-12-25 00:00:00 | 2012-12-25 23:59:00 |
+(2 行记录)
+
+book=# CREATE INDEX events_starts
+book-# ON events USING btree (starts);
+CREATE INDEX
+book=# SELECT * FROM events WHERE starts >= '2012-04-01';
+ event_id |      title      |       starts        |        ends         | venue_id
+----------+-----------------+---------------------+---------------------+----------
+        2 | April Fools Day | 2012-04-01 00:00:00 | 2012-04-01 23:59:00 |
+        3 | Christmas Day   | 2012-12-25 00:00:00 | 2012-12-25 23:59:00 |
+(2 行记录)
+
