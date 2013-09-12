@@ -1,0 +1,18 @@
+                              -输出文件-
+
+/Fa[file] 命名程序集列表文件            /FA[scu] 配置程序集列表
+/Fd[file] 命名 .PDB 文件                /Fe<file> 命名可执行文件
+/Fm[file] 命名映射文件                  /Fo<file> 命名对象文件
+/Fp<file> 命名预编译头文件              /Fr[file] 命名源浏览器文件
+/FR[file] 命名扩展 .SBR 文件            
+/doc[file] 处理 XML 文档注释，并可选择命名 .xdc 文件
+
+                              -预处理器-
+
+/AI<dir> 添加到程序集搜索路径           /FU<file> 强制使用程序集/模块 
+/C 不抽出注释                           /D<name>{=|#}<text> 定义宏
+/E 将预处理定向到 stdout                /EP 预处理到标准输出，没有 #line
+/P 预处理到文件                         /Fx 将插入的代码合并到文件中
+/FI<file> 命名强制包含文件              /U<name> 移除预定义的宏
+/u 移除所有预定义的宏                   /I<dir> 添加到包含搜索路径
+/X 忽略“标准位置”                     

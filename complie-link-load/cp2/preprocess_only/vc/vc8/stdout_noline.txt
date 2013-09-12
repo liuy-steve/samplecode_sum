@@ -1,0 +1,13 @@
+
+int main() {
+    int result = 
+
+
+
+1400
+
+
+
+;
+    return result;
+}

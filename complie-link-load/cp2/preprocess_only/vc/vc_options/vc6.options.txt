@@ -1,0 +1,15 @@
+                              -OUTPUT FILES-
+
+/Fa[file] name assembly listing file     /Fo<file> name object file
+/FA[sc] configure assembly listing       /Fp<file> name precompiled header file
+/Fd[file] name .PDB file                 /Fr[file] name source browser file
+/Fe<file> name executable file           /FR[file] name extended .SBR file
+/Fm[file] name map file
+
+                              -PREPROCESSOR-
+
+/C don't strip comments                  /FI<file> name forced include file
+/D<name>{=|#}<text> define macro         /U<name> remove predefined macro
+/E preprocess to stdout                  /u remove all predefined macros
+/EP preprocess to stdout, no #line       /I<dir> add to include search path
+/P preprocess to file                    /X ignore "standard places"
