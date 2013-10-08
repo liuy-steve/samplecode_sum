@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+    100	      8	      4	    112	     70	SimpleSection.o
