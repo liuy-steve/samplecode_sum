@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Windows Desktop
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lamda", "lamda\lamda.vcxproj", "{AE5DEFF1-42E7-481D-99DB-6FD4B69BDE4E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE5DEFF1-42E7-481D-99DB-6FD4B69BDE4E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AE5DEFF1-42E7-481D-99DB-6FD4B69BDE4E}.Debug|Win32.Build.0 = Debug|Win32
+		{AE5DEFF1-42E7-481D-99DB-6FD4B69BDE4E}.Release|Win32.ActiveCfg = Release|Win32
+		{AE5DEFF1-42E7-481D-99DB-6FD4B69BDE4E}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
