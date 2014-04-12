@@ -20,6 +20,7 @@
 #include <iostream>
 #include <algorithm>
 #include <boost/shared_ptr.hpp>
+#include <boost/make_shared.hpp>
 
 //  The application will produce a series of
 //  objects of type Foo which later must be
@@ -35,6 +36,7 @@ struct Foo
 };
 
 typedef boost::shared_ptr<Foo> FooPtr;
+using boost::make_shared;
 
 class FooPtrOps
 {
@@ -50,7 +52,7 @@ int main()
   std::vector<FooPtr>         foo_vector;
   std::set<FooPtr,FooPtrOps>  foo_set; // NOT multiset!
 
-  FooPtr foo_ptr( new Foo( 2 ) );
+  FooPtr foo_ptr( make_shared<Foo> ( 2 ) );
   foo_vector.push_back( foo_ptr );
   foo_set.insert( foo_ptr );
 
