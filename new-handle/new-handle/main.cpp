@@ -18,6 +18,7 @@
 
 
 #include "new-handle-dll.hpp"
+#include "QueryMemory.h"
 /********************************** 宏、常量 **********************************/
 const int MY_MAX_MEM_SIZE = 2147483647; //2G
 const int MY_MEM_SIZE_BLOCK = 1024;
@@ -29,20 +30,9 @@ const int MY_MEM_SIZE_BLOCK = 1024;
 void My_New_Handle()
 {
 	std::cout << "log:Operator New failed!" << std::endl;
+	std::cout << QueryMemory<SHOW_KIlO_BYTE>();
 	throw std::bad_alloc("Print:Operator New failed!");
 }
-
-extern "C"
-{
-	void Malloc_Handle()
-	{
-// 		if (std::_New_handler != NULL)
-// 		{
-// 			return std::_New_handler();
-// 		}
-		return My_New_Handle();
-	}
-};
 
 /*********************************** 类实现 ***********************************/
 
@@ -51,7 +41,7 @@ int main()
 	std::new_handler pold_handle = std::set_new_handler(My_New_Handle);
 	std::cout << "old handle is " << pold_handle  << std::endl;
 
-	try
+ 	try
 	{
 		char* pmem = new char[MY_MAX_MEM_SIZE];
 	}
@@ -69,6 +59,7 @@ int main()
 		std::cout << e.what() << std::endl;
 	}
 
+#if 0
 	{
 		std::vector<char*> vpool;
 		try
@@ -90,6 +81,8 @@ int main()
 			vpool.pop_back();
 		}
 	}
+#endif
+	
 
 	char* pmem = new char[MY_MAX_MEM_SIZE];
 	return 0;
