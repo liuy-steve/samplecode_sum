@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include <iosfwd>
 
 template <int nlevel = 0>
 class CppLog:public std::stringstream
@@ -10,24 +11,19 @@ public:
 		, m_sfile_(i_sfile)
 		, m_nline_(i_nline)
 	{
-
+// 		*this << "module output：error level " << nlevel;
+// 		*this << " module output：error line " << GetLine();
+// 		*this << " module output：error file " << GetFile();
 	};
 	virtual ~CppLog()
 	{
 		using std::cout;
-		cout << "模块日志输出：错误日志等级 " << nlevel << std::endl;
-		cout << "模块日志输出：错误行号		" << GetLine() << std::endl;
-		cout << "模块日志输出：错误文件		" << GetFile() << std::endl;
-		cout << this->str();
+		cout << str();
 	};
-public:
-//	template <typename T>
-// 	CppLog & operator << (const T& i_val)
+	
+// 	CppLog & operator << (const char *_Val)
 // 	{
-// 		m_ss_ << i_val;
-// 		cout << m_ss_.str();
-// 		m_ss_.clear();
-// 		return *this;
+// 		return ::operator << <char, std::char_traits<char> >(*this, _Val);
 // 	}
 
 public:
@@ -38,14 +34,12 @@ public:
 private:
 	const char* m_sfile_;
 	const int m_nline_;
-	std::stringstream m_ss_;
+
+	//std::stringstream m_ss_;
 };
 
-template <int nlevel>
-std::ostream& operator << (std::ostream & os, const CppLog<nlevel> & log)
-{
-	os << "错误日志等级 " << nlevel << std::endl;
-	os << "错误文件名 " << log.GetLine() << std::endl;
-	os << "错误行号 " << log.GetFile() << std::endl;
-	return os;
-}
+// template <int nlevel>
+//CppLog<nlevel> & operator << (CppLog<nlevel> & os, const char *_Val)
+//{
+//	return ::operator << <char, std::char_traits<char> >(os, _Val);
+//}
