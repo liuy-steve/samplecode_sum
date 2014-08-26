@@ -51,8 +51,12 @@ public:
 	};
 	~QueryMemory(){};
 	const int scale() const{return m_scale;};
+public:
+	static void SetPID(int const i_nPID) {s_npid = i_nPID;}
+	const int GetPID() const {return s_npid;}
 private:
 	const unsigned m_scale;
+	static int s_npid;
 };
 
 template<unsigned int T>
@@ -61,7 +65,7 @@ ostream& operator << ( ostream& os, const QueryMemory<T>& obj )
 	char aprocess_name[MAX_PATH] = "........";
 	HANDLE hProcess = OpenProcess( PROCESS_QUERY_INFORMATION | PROCESS_VM_READ,
 		FALSE, 
-		_getpid() );
+		obj.GetPID());
 	if ( hProcess )
 	{
 
@@ -85,5 +89,8 @@ ostream& operator << ( ostream& os, const QueryMemory<T>& obj )
 	}
 	return os;
 }
+
+template<unsigned int T>
+int QueryMemory<T>::s_npid = 0;
 
 #endif 

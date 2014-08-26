@@ -23,10 +23,18 @@
 /********************************** 函数实现 **********************************/
 
 /*********************************** 类实现 ***********************************/
+const int SHOW_WAY = SHOW_BYTE;
 
-
+using std::cin;
+using std::cout;
+using std::endl;
 int main()
 {
-	std::cout << QueryMemory<SHOW_BYTE>();
+	cout << "Please input the PID of process which you want to check!.." << endl;
+	int npid = 0;
+	cin >> npid;
+	QueryMemory<SHOW_WAY>().SetPID(npid);
+	cout << QueryMemory<SHOW_WAY>();
+	
 	return 0;
 }
