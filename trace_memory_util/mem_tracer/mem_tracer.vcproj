@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="heap_trace"
-	ProjectGUID="{A2DFCF7D-ED5C-4114-8DAD-751528F88D7B}"
-	RootNamespace="heap_trace"
+	Name="mem_tracer"
+	ProjectGUID="{09ED456A-4C16-4293-ADF8-E944729B4C11}"
+	RootNamespace="mem_tracer"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
 	>
@@ -40,8 +40,8 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				UseUnicodeResponseFiles="true"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;..\..\new-handle\new-handle&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -115,7 +115,6 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="&quot;..\..\new-handle\new-handle&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -173,23 +172,15 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\func_dependent.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\func_dependent.h"
-				>
-			</File>
-			<File
 				RelativePath=".\main.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\new-handle\new-handle\QueryMemory.cpp"
+				RelativePath=".\QueryMemory.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\new-handle\new-handle\QueryMemory.h"
+				RelativePath=".\QueryMemory.h"
 				>
 			</File>
 		</Filter>
