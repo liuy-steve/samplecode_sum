@@ -34,7 +34,13 @@ int main()
 	int npid = 0;
 	cin >> npid;
 	QueryMemory<SHOW_WAY>().SetPID(npid);
-	cout << QueryMemory<SHOW_WAY>();
+
+	while(1)
+	{
+		
+		cout << QueryMemory<SHOW_WAY>();
+		getchar();
+	}
 	
 	return 0;
 }
