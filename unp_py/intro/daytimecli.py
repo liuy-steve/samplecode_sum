@@ -18,7 +18,7 @@ def daytimecli(url):
             try:
                 buf = s.recv(1024)
             except socket.error as e:
-                print("socket read error!")
+                print("socket read error!", e)
             if len(buf) == 0:
                 break
             print("time is ...", buf)
@@ -27,6 +27,6 @@ def daytimecli(url):
         s.close()
         print("done.")
     except socket.error as e:
-        print("socket error!")
+        print("socket error!", e)
         sys.exit(1)
     
