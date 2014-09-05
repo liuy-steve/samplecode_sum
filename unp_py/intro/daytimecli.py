@@ -11,7 +11,7 @@ def daytimecli(url):
         print("done.")
 
         print("Conneting to remote host...")
-        s.connect(('10.17.59.147', 13))
+        s.connect((url, 13))
         print("done.")
 
         while (1):
