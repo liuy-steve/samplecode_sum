@@ -13,6 +13,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "single number", "single num
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "single_number_test", "..\single number\single_number_test\single_number_test.vcproj", "{32C2B04E-DE36-42F9-B03F-0C32010EE0E6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Two Sum", "Two Sum", "{066266E5-CC90-4C33-82E1-8C9B4A4766A0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "two_sum", "..\Two Sum\two_sum\two_sum.vcproj", "{278CCEFA-6222-4224-9FE8-FAC6F55D25F1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "two_sum_test", "..\Two Sum\two_sum_test\two_sum_test.vcproj", "{5E158F0B-47C9-458A-8541-6CED8CB8089B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -35,6 +41,14 @@ Global
 		{32C2B04E-DE36-42F9-B03F-0C32010EE0E6}.Debug|Win32.Build.0 = Debug|Win32
 		{32C2B04E-DE36-42F9-B03F-0C32010EE0E6}.Release|Win32.ActiveCfg = Release|Win32
 		{32C2B04E-DE36-42F9-B03F-0C32010EE0E6}.Release|Win32.Build.0 = Release|Win32
+		{278CCEFA-6222-4224-9FE8-FAC6F55D25F1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{278CCEFA-6222-4224-9FE8-FAC6F55D25F1}.Debug|Win32.Build.0 = Debug|Win32
+		{278CCEFA-6222-4224-9FE8-FAC6F55D25F1}.Release|Win32.ActiveCfg = Release|Win32
+		{278CCEFA-6222-4224-9FE8-FAC6F55D25F1}.Release|Win32.Build.0 = Release|Win32
+		{5E158F0B-47C9-458A-8541-6CED8CB8089B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5E158F0B-47C9-458A-8541-6CED8CB8089B}.Debug|Win32.Build.0 = Debug|Win32
+		{5E158F0B-47C9-458A-8541-6CED8CB8089B}.Release|Win32.ActiveCfg = Release|Win32
+		{5E158F0B-47C9-458A-8541-6CED8CB8089B}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,5 +57,7 @@ Global
 		{F7A1B702-6AF7-4B03-9B0A-F98AACD180E7} = {91747F6A-2757-4936-9E49-54BCA21D5EF9}
 		{21A8C97B-0868-4147-A229-4F81D6C6EBAE} = {33A93BD5-FC6D-443B-B0D4-E1FC21BF8790}
 		{32C2B04E-DE36-42F9-B03F-0C32010EE0E6} = {33A93BD5-FC6D-443B-B0D4-E1FC21BF8790}
+		{278CCEFA-6222-4224-9FE8-FAC6F55D25F1} = {066266E5-CC90-4C33-82E1-8C9B4A4766A0}
+		{5E158F0B-47C9-458A-8541-6CED8CB8089B} = {066266E5-CC90-4C33-82E1-8C9B4A4766A0}
 	EndGlobalSection
 EndGlobal
