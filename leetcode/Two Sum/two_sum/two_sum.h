@@ -1,20 +1,20 @@
 #include <vector>
+#include <algorithm>
 
 using std::vector;
+using std::find;
 class Solution {
 public:
 	vector<int> twoSum(vector<int> &numbers, int target) {
 		vector<int> vRet;
 		for (vector<int>::iterator it = numbers.begin(); it != numbers.end() - 1; it++)
 		{
-			for(vector<int>::iterator cursor = it + 1; cursor != numbers.end(); cursor++)
+			vector<int>::iterator dest = find(it + 1, numbers.end(), target - *it);
+			if (dest != numbers.end())
 			{
-				if (*it + *cursor == target)
-				{
-					vRet.push_back(it - numbers.begin() + 1);
-					vRet.push_back(cursor - numbers.begin() + 1);
-					return vRet;
-				}
+				vRet.push_back(it - numbers.begin() + 1);
+				vRet.push_back(dest - numbers.begin() + 1);
+				return vRet;
 			}
 		}
 		return vRet;
