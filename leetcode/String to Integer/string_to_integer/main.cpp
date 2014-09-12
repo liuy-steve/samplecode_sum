@@ -10,6 +10,7 @@ int main()
 	assert(solution.atoi("2147483647") == INT_MAX);
 
 	//abnormal
-	assert(solution.atoi("2147483648") != INT_MAX);
+	assert(solution.atoi("2147483648") == 0);
+	assert(solution.atoi("what the fuck!") == 0);
 	return 0;
 }

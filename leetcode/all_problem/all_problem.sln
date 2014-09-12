@@ -25,6 +25,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reverse Integer", "Reverse 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "string_to_integer", "..\String to Integer\string_to_integer\string_to_integer.vcproj", "{923E0C8D-649B-4443-9E11-CFF8EA1F0F8D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "palindrome_number", "..\Palindrome Number\palindrome_number\palindrome_number.vcproj", "{A1ACD83E-B3D5-490C-9797-AC999FF13241}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "longest_common_prefix", "..\Longest Common Prefix\longest_common_prefix\longest_common_prefix.vcproj", "{26AE8D7E-D7A4-473D-ACDC-7DBA6B990962}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -63,6 +67,14 @@ Global
 		{923E0C8D-649B-4443-9E11-CFF8EA1F0F8D}.Debug|Win32.Build.0 = Debug|Win32
 		{923E0C8D-649B-4443-9E11-CFF8EA1F0F8D}.Release|Win32.ActiveCfg = Release|Win32
 		{923E0C8D-649B-4443-9E11-CFF8EA1F0F8D}.Release|Win32.Build.0 = Release|Win32
+		{A1ACD83E-B3D5-490C-9797-AC999FF13241}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A1ACD83E-B3D5-490C-9797-AC999FF13241}.Debug|Win32.Build.0 = Debug|Win32
+		{A1ACD83E-B3D5-490C-9797-AC999FF13241}.Release|Win32.ActiveCfg = Release|Win32
+		{A1ACD83E-B3D5-490C-9797-AC999FF13241}.Release|Win32.Build.0 = Release|Win32
+		{26AE8D7E-D7A4-473D-ACDC-7DBA6B990962}.Debug|Win32.ActiveCfg = Debug|Win32
+		{26AE8D7E-D7A4-473D-ACDC-7DBA6B990962}.Debug|Win32.Build.0 = Debug|Win32
+		{26AE8D7E-D7A4-473D-ACDC-7DBA6B990962}.Release|Win32.ActiveCfg = Release|Win32
+		{26AE8D7E-D7A4-473D-ACDC-7DBA6B990962}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
