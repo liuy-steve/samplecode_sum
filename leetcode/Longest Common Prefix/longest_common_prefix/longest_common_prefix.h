@@ -17,21 +17,21 @@ public:
 		{
 			return *strs.begin();
 		}
-		sort(strs.begin(), strs.end());
 
-		string sprefix = subCommonString(strs[0], strs[1]);
-		for (unsigned int i = 2; i < strs.size(); i++)
+		string sprefix = *strs.begin();
+		for (unsigned int i = 1; i < strs.size(); i++)
 		{
-			if (strs[i].find(sprefix) != 0)
+			subCommonString(sprefix, strs[i]);
+			if (sprefix.length() == 0)
 			{
-				return "";
+				break;
 			}
 		}
 		return sprefix;
 	}
 
 private:
-	string subCommonString(string & l, string & r)
+	void subCommonString(string & l, string & r)
 	{
 		size_t npos = 0;
 		while(1)
@@ -50,6 +50,6 @@ private:
 				break;
 			}
 		}
-		return l.substr(0, npos);
+		l = l.substr(0, npos);
 	}
 };
