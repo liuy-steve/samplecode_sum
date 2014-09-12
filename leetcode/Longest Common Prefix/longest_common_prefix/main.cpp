@@ -3,9 +3,9 @@
 
 int main()
 {
-	string stest[] = {"abc", "abcd", "abcde"};
+	string stest[] = {"a", "a", "b"};
 	vector<string> test(&stest[0], &stest[0] + 3);
 	Solution solution;
-	assert(solution.longestCommonPrefix(test) == "abcd");
+	assert(solution.longestCommonPrefix(test) == "");
 	return 0;
 }

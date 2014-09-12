@@ -8,26 +8,26 @@ using std::sort;
 class Solution {
 public:
 	string longestCommonPrefix(vector<string> &strs) {
-		string sret = "";
+
 		if(strs.empty())
 		{
-			return sret;
+			return "";
 		}
 		if (strs.size() == 1)
 		{
 			return *strs.begin();
 		}
 		sort(strs.begin(), strs.end());
-		sret = "";
-		for (unsigned int i = 0; i < strs.size() - 1; i++)
+
+		string sprefix = subCommonString(strs[0], strs[1]);
+		for (unsigned int i = 2; i < strs.size(); i++)
 		{
-			string sprefix = subCommonString(strs[i], strs[i + 1]);
-			if (sprefix.length() > sret.length())
+			if (strs[i].find(sprefix) != 0)
 			{
-				sret = sprefix;
+				return "";
 			}
 		}
-		return sret;
+		return sprefix;
 	}
 
 private:
