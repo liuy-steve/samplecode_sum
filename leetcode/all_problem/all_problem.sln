@@ -19,6 +19,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "two_sum", "..\Two Sum\two_s
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "two_sum_test", "..\Two Sum\two_sum_test\two_sum_test.vcproj", "{5E158F0B-47C9-458A-8541-6CED8CB8089B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "reverse_integer", "..\Reverse Integer\reverse_integer\reverse_integer.vcproj", "{C84B9A54-C7F3-4A36-9561-2EA57A14C45A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reverse Integer", "Reverse Integer", "{330B65C4-151B-485F-B66D-98FA4399524F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "string_to_integer", "..\String to Integer\string_to_integer\string_to_integer.vcproj", "{923E0C8D-649B-4443-9E11-CFF8EA1F0F8D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -49,6 +55,14 @@ Global
 		{5E158F0B-47C9-458A-8541-6CED8CB8089B}.Debug|Win32.Build.0 = Debug|Win32
 		{5E158F0B-47C9-458A-8541-6CED8CB8089B}.Release|Win32.ActiveCfg = Release|Win32
 		{5E158F0B-47C9-458A-8541-6CED8CB8089B}.Release|Win32.Build.0 = Release|Win32
+		{C84B9A54-C7F3-4A36-9561-2EA57A14C45A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C84B9A54-C7F3-4A36-9561-2EA57A14C45A}.Debug|Win32.Build.0 = Debug|Win32
+		{C84B9A54-C7F3-4A36-9561-2EA57A14C45A}.Release|Win32.ActiveCfg = Release|Win32
+		{C84B9A54-C7F3-4A36-9561-2EA57A14C45A}.Release|Win32.Build.0 = Release|Win32
+		{923E0C8D-649B-4443-9E11-CFF8EA1F0F8D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{923E0C8D-649B-4443-9E11-CFF8EA1F0F8D}.Debug|Win32.Build.0 = Debug|Win32
+		{923E0C8D-649B-4443-9E11-CFF8EA1F0F8D}.Release|Win32.ActiveCfg = Release|Win32
+		{923E0C8D-649B-4443-9E11-CFF8EA1F0F8D}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,5 +73,6 @@ Global
 		{32C2B04E-DE36-42F9-B03F-0C32010EE0E6} = {33A93BD5-FC6D-443B-B0D4-E1FC21BF8790}
 		{278CCEFA-6222-4224-9FE8-FAC6F55D25F1} = {066266E5-CC90-4C33-82E1-8C9B4A4766A0}
 		{5E158F0B-47C9-458A-8541-6CED8CB8089B} = {066266E5-CC90-4C33-82E1-8C9B4A4766A0}
+		{C84B9A54-C7F3-4A36-9561-2EA57A14C45A} = {330B65C4-151B-485F-B66D-98FA4399524F}
 	EndGlobalSection
 EndGlobal
